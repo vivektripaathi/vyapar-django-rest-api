@@ -8,9 +8,10 @@ class UserConfig(AppConfig):
 
     def ready(self) -> None:
         from user.inject import UserContainer
+        from user import user
 
         self.inject_container = UserContainer()
         self.inject_container.wire(
-            packages=[],
+            packages=[user],
             modules=[],
         )
