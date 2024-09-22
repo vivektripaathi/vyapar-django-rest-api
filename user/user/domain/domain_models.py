@@ -1,7 +1,8 @@
-from typing import List
+# from typing import List
 
-from user.types import UserId
 from core.utils import VyaparBaseModel
+from user.types import UserId
+
 
 class UserDomainModel(VyaparBaseModel):
     id: UserId

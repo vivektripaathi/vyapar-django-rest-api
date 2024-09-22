@@ -1,6 +1,6 @@
-import orjson
 from typing import Dict, Union, cast
 
+import orjson
 from pydantic import BaseModel
 from pydantic.generics import GenericModel
 
@@ -12,6 +12,7 @@ def _dict_serialized(obj: Union[BaseModel, GenericModel], *args, **kwargs) -> Di
     a dict to return it as a response.
     """
     return cast(Dict, orjson.loads(obj.json(*args, **kwargs)))
+
 
 class VyaparBaseModel(BaseModel):
     """Vyapar Base Model from which all other Models should inherit"""

@@ -7,6 +7,7 @@ from user.user.domain.domain_models import UserDomainModel
 
 logger = logging.getLogger(__name__)
 
+
 class UserDbRepository(UserAbstractRepository):
     """User Database Repository."""
 
