@@ -8,6 +8,7 @@ from user.user.domain.domain_models import UserDomainModel
 
 logger = logging.getLogger(__name__)
 
+
 class GetUserUseCase:
     def __init__(
         self, db_repo: UserAbstractRepository = Provide["user.db_repo"]
@@ -15,7 +16,5 @@ class GetUserUseCase:
         self.db_repo = db_repo
 
     def execute(self, id: UserId) -> UserDomainModel:
-        logger.info(
-            "Got request to get user by id %s", id
-        )
+        logger.info("Got request to get user by id %s", id)
         return self.db_repo.get(id)

@@ -1,7 +1,9 @@
-from django.db import models
 import uuid
 
+from django.db import models
+
 # Create your models here.
+
 
 class User(models.Model):
     id = models.UUIDField(
@@ -11,7 +13,7 @@ class User(models.Model):
     contact_number = models.CharField(max_length=255, null=False, blank=False)
     aadhar_number = models.CharField(max_length=255, null=False, blank=False)
     pan_number = models.CharField(max_length=255, null=False, blank=False)
-    is_setup_completed =  models.BooleanField(default=False)
+    is_setup_completed = models.BooleanField(default=False)
 
     class Meta:
-        db_table = 'users'
+        db_table = "users"
