@@ -1,10 +1,9 @@
 from typing import List
-from pydantic import BaseModel
 
 from user.types import UserId
+from core.utils import VyaparBaseModel
 
-
-class UserDomainModel(BaseModel):
+class UserDomainModel(VyaparBaseModel):
     id: UserId
     name: str
     contact_number: str
