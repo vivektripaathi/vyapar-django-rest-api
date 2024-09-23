@@ -32,6 +32,7 @@ six = "1.16.0"
 sqlparse = "0.5.1"
 tomlkit = "0.13.2"
 typing-extensions = "4.12.2"
+pre-commit = "^3.8.0"
 
 [build-system]
 requires = ["poetry-core"]
