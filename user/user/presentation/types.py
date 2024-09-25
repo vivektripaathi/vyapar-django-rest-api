@@ -11,5 +11,5 @@ class SendOTPRequest(VyaparBaseModel):
         if values.get("phone"):
             password_length = len(values["phone"])
             if password_length != 10:
-                raise ValueError("Password must be 10 ")
+                raise ValueError("Phone must be of length 10")
         return values
