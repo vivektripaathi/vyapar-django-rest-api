@@ -9,14 +9,13 @@ from user.user.presentation.types import SendOTPRequest
 class SendOTPUseCase:
     def __init__(
         self,
-        create_token_use_case: CreateTokenUseCase = Provide[
-            "token.create_token_use_case"
-        ],
+        create_token_use_case: CreateTokenUseCase = Provide["token.create_token_use_case"],
     ) -> None:
         self.create_token_use_case = create_token_use_case
 
     def _get_token_request(self, otp_request: SendOTPRequest) -> dict:
-        otp: int = random.randint(1000, 9999)
+        otp: int = random.randint(100000, 999999)
+        print(otp)
         return {
             "phone": otp_request.phone,
             "otp": otp,

@@ -10,9 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class GetUserUseCase:
-    def __init__(
-        self, db_repo: UserAbstractRepository = Provide["user.db_repo"]
-    ) -> None:
+    def __init__(self, db_repo: UserAbstractRepository = Provide["user.db_repo"]) -> None:
         self.db_repo = db_repo
 
     def execute(self, id: UserId) -> UserDomainModel:

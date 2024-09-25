@@ -131,9 +131,7 @@ LOGLEVEL = env("LOGLEVEL")
 
 
 __DJANGO_SERVER_LOGGING_CONFIG = DEFAULT_LOGGING["handlers"]["django.server"]
-__DJANGO_SERVER_LOGGING_CONFIG["filters"] = __DJANGO_SERVER_LOGGING_CONFIG.get(
-    "filters", []
-)
+__DJANGO_SERVER_LOGGING_CONFIG["filters"] = __DJANGO_SERVER_LOGGING_CONFIG.get("filters", [])
 __DJANGO_SERVER_LOGGING_CONFIG["filters"].append("request_id")
 logging.config.dictConfig(
     {
@@ -205,9 +203,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES = ("core.renderers.PydanticRenderer",)
 
 if DEBUG:
-    REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES = (
-        REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES
-        + ("rest_framework.renderers.BrowsableAPIRenderer",)
+    REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES = REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES + (
+        "rest_framework.renderers.BrowsableAPIRenderer",
     )
 
 REST_FRAMEWORK = {

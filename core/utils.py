@@ -11,9 +11,7 @@ from pydantic.generics import GenericModel
 from rest_framework.exceptions import ValidationError
 from rest_framework.views import exception_handler
 
-from core.exceptions import (
-    InvalidTokenException, TokenExpiredException, VyaparAPIException, VyaparException,
-)
+from core.exceptions import InvalidTokenException, TokenExpiredException, VyaparAPIException, VyaparException
 
 logger = logging.getLogger(__name__)
 
@@ -58,9 +56,7 @@ def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
     if response is not None and response.status_code > 304:
-        current_stack_trace = "".join(
-            traceback.format_exception(exc.__class__, exc, exc.__traceback__)
-        )
+        current_stack_trace = "".join(traceback.format_exception(exc.__class__, exc, exc.__traceback__))
         logger.info(
             "Response code %s from %s \n Stacktrace: %s",
             response.status_code,
@@ -71,12 +67,8 @@ def custom_exception_handler(exc, context):
     # Now add the HTTP status code to the response.
     if response is not None and isinstance(exc, VyaparAPIException):
         response.data["status_code"] = response.status_code
-        response.data["code"] = (
-            exc.code if hasattr(exc, "code") else VyaparException.code
-        )
-        response.data["message"] = (
-            response.data["detail"] if "detail" in response.data else ""
-        )
+        response.data["code"] = exc.code if hasattr(exc, "code") else VyaparException.code
+        response.data["message"] = response.data["detail"] if "detail" in response.data else ""
 
     return response
 

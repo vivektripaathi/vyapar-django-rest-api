@@ -15,9 +15,7 @@ class CreateTokenUseCase:
         token_request: dict,
     ):
         logger.info("Got request to generate a encoded token")
-        expiry = datetime.now(timezone.utc) + timedelta(
-            minutes=settings.JWT_EXPIRY_MINUTES
-        )
+        expiry = datetime.now(timezone.utc) + timedelta(minutes=settings.JWT_EXPIRY_MINUTES)
         token_request["exp"] = expiry
         token = create_jwt_token(token_request)
         return TokenResponse(token=token, expires_in=expiry)

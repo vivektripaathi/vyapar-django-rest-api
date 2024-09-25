@@ -6,9 +6,7 @@ from django.db import models
 
 
 class User(models.Model):
-    id = models.UUIDField(
-        default=uuid.uuid4, editable=False, unique=True, db_index=True, primary_key=True
-    )
+    id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, db_index=True, primary_key=True)
     name = models.CharField(max_length=255, null=False, blank=False)
     contact_number = models.CharField(max_length=255, null=False, blank=False)
     aadhar_number = models.CharField(max_length=255, null=False, blank=False)
