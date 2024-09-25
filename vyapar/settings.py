@@ -28,9 +28,11 @@ env = environ.Env(
         str,
         "6L,TvCr.pve><r}z>fFR};nM/x!#>2zF=*{B|'&‡9B<B7gjkwkYO}ag/EiGvDm>",
     ),
+    JWT_EXPIRY_MINUTES=(int, 10080),
 )
 env.read_env(os.path.join(BASE_DIR, ".env"))
 JWT_SECRET_KEY = env("JWT_SECRET_KEY")
+JWT_EXPIRY_MINUTES = env("JWT_EXPIRY_MINUTES")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
