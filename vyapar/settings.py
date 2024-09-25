@@ -213,4 +213,5 @@ if DEBUG:
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES,
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "EXCEPTION_HANDLER": "core.utils.custom_exception_handler",
 }
