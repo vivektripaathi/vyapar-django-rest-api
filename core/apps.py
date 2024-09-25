@@ -6,12 +6,13 @@ class CoreConfig(AppConfig):
     name = "core"
     inject_container = None
 
-    def ready(self):
+    def ready(self) -> None:
         from core import token
         from core.inject import CoreContainer
+        from user import user
 
         self.inject_container = CoreContainer()
         self.inject_container.wire(
-            packages=[token],
+            packages=[token, user],
             modules=[],
         )
