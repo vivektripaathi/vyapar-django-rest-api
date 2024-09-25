@@ -25,10 +25,21 @@ class VyaparBaseModel(BaseModel):
         return _dict_serialized(self, *args, **kwargs)
 
 
+def create_jwt_token(payload: dict):
+    return jwt.encode(payload, settings.JWT_SECRET_KEY, algorithm="HS256")
+
+
 def decode_jwt_token(token) -> dict:
     try:
         return jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=["HS256"])
     except jwt.ExpiredSignatureError as exc:
         raise TokenExpiredException from exc
+    except Exception as exc:
+        raise InvalidTokenException from exc
+
+
+def decode_expired_jwt_token(token: str) -> dict:
+    try:
+        return jwt.decode(token, options={"verify_signature": False})
     except Exception as exc:
         raise InvalidTokenException from exc
