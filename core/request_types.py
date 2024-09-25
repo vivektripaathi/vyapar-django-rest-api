@@ -6,13 +6,13 @@ from django.http import HttpRequest
 from user.models import User
 
 
-class OnboHttpRequest(HttpRequest):
+class VyaparHttpRequest(HttpRequest):
     user: Union[AbstractBaseUser, AnonymousUser]
     # shop: Optional[Shop]
     data: Any
 
 
-class VyaparAuthenticatedHttpRequest(OnboHttpRequest):
+class VyaparAuthenticatedHttpRequest(VyaparHttpRequest):
     user: User
     # shop: Optional[Shop]
     data: Any
