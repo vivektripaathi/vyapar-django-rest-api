@@ -31,6 +31,7 @@ env = environ.Env(
     JWT_EXPIRY_MINUTES=(int, 10080),
 )
 env.read_env(os.path.join(BASE_DIR, ".env"))
+# Get the SECRETS from environment variables
 JWT_SECRET_KEY = env("JWT_SECRET_KEY")
 JWT_EXPIRY_MINUTES = env("JWT_EXPIRY_MINUTES")
 
