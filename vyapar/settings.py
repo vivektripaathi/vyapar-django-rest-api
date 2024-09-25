@@ -24,8 +24,13 @@ env = environ.Env(
     LOGLEVEL=(str, "INFO"),
     DEBUG_SQL=(bool, False),
     ATOMIC_REQUESTS=(bool, True),
+    JWT_SECRET_KEY=(
+        str,
+        "6L,TvCr.pve><r}z>fFR};nM/x!#>2zF=*{B|'&‡9B<B7gjkwkYO}ag/EiGvDm>",
+    ),
 )
 env.read_env(os.path.join(BASE_DIR, ".env"))
+JWT_SECRET_KEY = env("JWT_SECRET_KEY")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -42,6 +47,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -194,4 +200,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Rest framework settings
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
 }
