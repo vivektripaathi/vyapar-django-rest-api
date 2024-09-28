@@ -13,6 +13,7 @@ class GetUserUseCase:
     def __init__(self, db_repo: UserAbstractRepository = Provide["user.db_repo"]) -> None:
         self.db_repo = db_repo
 
+    # TODO: Separate use case
     def _get_user_by_contact_number(self, contact_number: str) -> UserDomainModel:
         logger.info("Getting user by contact number %s", contact_number)
         return self.db_repo.get_by_contact_number(contact_number)
