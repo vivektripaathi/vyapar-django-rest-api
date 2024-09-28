@@ -13,3 +13,8 @@ class WrongOTPException(VyaparException):
     code = "Vyapar_USER_0002"
     status_code = status.HTTP_401_UNAUTHORIZED
     default_detail = "The provided OTP is incorrect"
+
+class UserAlreadyExists(VyaparException):
+    code = "Vyapar_USER_0003"
+    status_code = status.HTTP_400_BAD_REQUEST
+    default_detail = "User already exists"

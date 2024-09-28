@@ -30,8 +30,8 @@ class VerifyOTP(APIView):
         verify_otp_use_case: VerifyOTPUseCase = Provide["user.verify_otp_use_case"],
     ):
         verify_otp_request = VerifyOTPRequest.parse_obj(request.data)
-        verify_otp_use_case.execute(verify_otp_request)
-        return Response(status=status.HTTP_200_OK)
+        response_data = verify_otp_use_case.execute(verify_otp_request)
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
 class GetUserView(APIView):
