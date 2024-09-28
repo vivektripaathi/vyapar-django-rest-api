@@ -63,9 +63,9 @@ class Migration(migrations.Migration):
                 ("invoice", models.TextField(blank=True, null=True)),
                 ("shop_image", models.TextField(blank=True, null=True)),
                 (
-                    "created_by",
+                    "owner",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.PROTECT, related_name="%(class)s_created_by", to="user.user"
+                        on_delete=django.db.models.deletion.PROTECT, related_name="%(class)s_owner", to="user.user"
                     ),
                 ),
                 (

@@ -20,12 +20,12 @@ class Shop(UUIDPrimaryKeyMixin):
     invoice = models.TextField(null=True, blank=True)
     shop_image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(ShopCategory, related_name="shop_categories", on_delete=models.PROTECT)
-    created_by = models.ForeignKey(
+    owner = models.ForeignKey(
         "user.User",
         null=False,
         blank=False,
         on_delete=models.PROTECT,
-        related_name="%(class)s_created_by",
+        related_name="%(class)s_owner",
     )
 
     class Meta:
