@@ -1,11 +1,12 @@
-# from typing import List
+from typing import Optional
 
 from core.utils import VyaparBaseModel
 from user.types import UserId
 
 
+
 class UserDomainModel(VyaparBaseModel):
-    id: UserId
+    id: Optional[UserId] = None
     name: str
     contact_number: str
     aadhar_number: str

@@ -20,7 +20,7 @@ class CreateUserUseCase:
 
     def execute(self, user: UserDomainModel) -> UserDomainModel:
         try:
-            existing_user = self._get_user_by_contact_number(user.contact_number)
+            existing_user = self.get_user_use_case._get_user_by_contact_number(user.contact_number)
             if existing_user:
                 raise UserAlreadyExists(f"User with contact number {user.contact_number.value} already exists.")
         except UserNotFound:

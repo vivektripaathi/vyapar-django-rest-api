@@ -42,7 +42,7 @@ class UserDbRepository(UserAbstractRepository):
 
         user_db_entry = User.objects.create(
             name=user.name,
-            contact_number=user.contact_number.value,
+            contact_number=user.contact_number,
             aadhar_number=user.aadhar_number,
             pan_number=user.pan_number,
             is_setup_completed=user.is_setup_completed,

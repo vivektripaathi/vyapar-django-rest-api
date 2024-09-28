@@ -39,7 +39,6 @@ class VerifyOTPUseCase:
         except UserNotFound:
             # If the user is not found, create a new user
             new_user = UserDomainModel(
-                id=None,
                 name="Default Name",
                 contact_number=contact_number,
                 aadhar_number="",
@@ -52,5 +51,5 @@ class VerifyOTPUseCase:
     def execute(self, verify_otp_request: VerifyOTPRequest) -> dict:
         token_data = self.decode_token_use_case.execute(verify_otp_request.token)
         user = self._verify_otp_with_token_request(verify_otp_request, token_data)
-        token = self.create_token_use_case.execute(user)
+        token = self.create_token_use_case.execute(user.dict_serialized())
         return {"user": user.dict_serialized(), "token": token}
