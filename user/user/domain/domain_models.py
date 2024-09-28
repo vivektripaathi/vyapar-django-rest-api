@@ -4,7 +4,6 @@ from core.utils import VyaparBaseModel
 from user.types import UserId
 
 
-
 class UserDomainModel(VyaparBaseModel):
     id: Optional[UserId] = None
     name: str
